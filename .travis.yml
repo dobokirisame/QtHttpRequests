@@ -1,0 +1,44 @@
+sudo: required
+dist: trusty
+language: generic
+
+script:
+  - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-5 /usr/bin/gcc
+  - gcc --version
+matrix:
+  include:
+    - os: linux
+      env: COMPILER_NAME=gcc CXX=g++-7 CC=gcc-7
+      addons:
+        apt:
+          packages:
+            - gcc-7
+            - g++-7
+          sources: &sources
+            - ubuntu-toolchain-r-test
+        env:
+          - MATRIX_EVAL="CC=gcc-7 && CXX=g++-67
+
+before_install:
+    
+before_install:
+  - sudo add-apt-repository --yes ppa:beineri/opt-qt-5.10.1-trusty
+  - sudo apt-get update -qq
+  - eval "${MATRIX_EVAL}"
+
+      
+install:
+  - sudo apt-get -y install qt510[QTPACKAGE]
+  - sudo apt-get install -qq g++-7 libgl1-mesa-dev
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90
+      
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+script:
+  - source /opt/qt510/bin/qt510-env.sh
+  - cd $TRAVIS_BUILD_DIR/src
+  - touch qt_deps.pri
+  - /opt/qt510/bin/qmake src.pro
+  - make
