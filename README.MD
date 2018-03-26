@@ -1,6 +1,6 @@
 # QtHttpRequests
 
-
+[![Build Status](https://travis-ci.org/dobokirisame/QtHttpRequests.svg?branch=master)](https://travis-ci.org/dobokirisame/QtHttpRequests)
 
 ----------
 Simple Qt-based library to work with http request methods.  
