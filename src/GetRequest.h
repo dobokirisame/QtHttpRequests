@@ -3,11 +3,11 @@
 #include "Request.h"
 #include <QVariant>
 #include <map>
-#include "compilerexplorer_global.h"
+#include "QHttpRequests_global.h"
 
-namespace compilerExplorer {
-namespace network{
-class COMPILEREXPLORERSHARED_EXPORT GetRequest : public Request
+namespace requests {
+
+class QHTTPREQUESTSSHARED_EXPORT GetRequest : public Request
 {
 public:
 	GetRequest();
@@ -22,6 +22,5 @@ protected:
 private:
 	std::map<QString, QString> mParams;
 };
-}
 }
 #endif // GETREQUEST_H

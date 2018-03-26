@@ -1,0 +1,9 @@
+#pragma once
+
+#include <QtGlobal>
+
+#if defined(QHTTPREQUESTS_LIBRARY)
+#  define QHTTPREQUESTSSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define QHTTPREQUESTSSHARED_EXPORT Q_DECL_IMPORT
+#endif

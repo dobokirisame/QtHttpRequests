@@ -2,8 +2,8 @@
 #include <QNetworkRequest>
 #include <QJsonDocument>
 
-namespace compilerExplorer {
-namespace network{
+namespace requests {
+
 
 PostJsonRequest::PostJsonRequest()
     : GetRequest() {
@@ -53,6 +53,5 @@ void PostJsonRequest::setFiltersKey(const QString &filtersKey) {
 
 QString PostJsonRequest::requestName() const {
 	return QObject::tr("PostJsonRequest");
-}
 }
 }

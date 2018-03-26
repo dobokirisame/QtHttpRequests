@@ -2,12 +2,12 @@
 #define PUTJSONREQUEST_H
 #include "PostJsonRequest.h"
 #include <QJsonObject>
-#include "compilerexplorer_global.h"
+#include "QHttpRequests_global.h"
 
-namespace compilerExplorer {
-namespace network{
+namespace requests {
 
-class COMPILEREXPLORERSHARED_EXPORT PutJsonRequest : public PostJsonRequest
+
+class QHTTPREQUESTSSHARED_EXPORT PutJsonRequest : public PostJsonRequest
 {
 public:
 	PutJsonRequest();
@@ -20,6 +20,5 @@ private:
 	std::map<QString, QString> mGetParameters;
 	std::map<QString, QString> mPostParameters;
 };
-}
 }
 #endif // PUTJSONREQUEST_H

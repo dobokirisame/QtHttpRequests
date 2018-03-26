@@ -8,8 +8,8 @@
 
 const int timeout = 15000;
 
-namespace compilerExplorer {
-namespace network{
+namespace requests {
+
 
 RequestSender::RequestSender(QObject *parent) :
     QObject(parent),
@@ -42,5 +42,4 @@ QByteArray RequestSender::sendRequest(const std::unique_ptr<Request> &request) c
 	return result;
 }
 
-}
 }

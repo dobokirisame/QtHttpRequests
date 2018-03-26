@@ -4,13 +4,13 @@
 #include <memory>
 #include <QString>
 #include <QNetworkReply>
-#include "compilerexplorer_global.h"
+#include "QHttpRequests_global.h"
 
 class QNetworkRequest;
 class QNetworkAccessManager;
-namespace compilerExplorer {
-namespace network{
-class COMPILEREXPLORERSHARED_EXPORT Request
+namespace requests {
+
+class QHTTPREQUESTSSHARED_EXPORT Request
 {
 public:
 	Request();
@@ -26,6 +26,5 @@ private:
 	QString mAddress;
 	int mPort;
 };
-}
 }
 #endif // REQUEST_H

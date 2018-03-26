@@ -2,8 +2,8 @@
 #include <QNetworkRequest>
 #include <QJsonDocument>
 
-namespace compilerExplorer {
-namespace network{
+namespace requests {
+
 PutJsonRequest::PutJsonRequest()
 	: PostJsonRequest() {
 
@@ -32,6 +32,3 @@ QString PutJsonRequest::requestName() const {
 	return QObject::tr("PutJsonRequest");
 }
 }
-}
-
-

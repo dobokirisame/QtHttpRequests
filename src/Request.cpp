@@ -1,7 +1,7 @@
 #include "Request.h"
 
-namespace compilerExplorer {
-namespace network{
+namespace requests {
+
 
 Request::Request()
     : mPort(80) {
@@ -24,7 +24,5 @@ int Request::port() const {
 
 void Request::setPort(int port) {
 	mPort = port;
-}
-
 }
 }

@@ -3,14 +3,14 @@
 
 #include <QObject>
 #include <memory>
-#include "compilerexplorer_global.h"
+#include "QHttpRequests_global.h"
 
 class QNetworkAccessManager;
-namespace compilerExplorer {
-namespace network{
+namespace requests {
+
 class Request;
 
-class COMPILEREXPLORERSHARED_EXPORT RequestSender : public QObject
+class QHTTPREQUESTSSHARED_EXPORT RequestSender : public QObject
 {
 	Q_OBJECT
 public:
@@ -20,6 +20,5 @@ public slots:
 private:
 	QNetworkAccessManager *mManager;
 };
-}
 }
 #endif // REQUESTSENDER_H

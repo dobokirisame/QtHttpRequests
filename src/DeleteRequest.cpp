@@ -1,8 +1,8 @@
 #include "DeleteRequest.h"
 #include <QNetworkRequest>
 
-namespace compilerExplorer {
-namespace network{
+namespace requests {
+
 DeleteRequest::DeleteRequest()
 	: GetRequest() {
 }
@@ -16,6 +16,5 @@ std::unique_ptr<QNetworkReply> DeleteRequest::sendRequest(QNetworkAccessManager 
 
 QString DeleteRequest::requestName() const {
 	return QObject::tr("DeleteRequest");
-}
 }
 }

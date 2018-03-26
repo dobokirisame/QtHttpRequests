@@ -2,12 +2,12 @@
 #define POSTJSONREQUEST_H
 #include "GetRequest.h"
 #include <QJsonObject>
-#include "compilerexplorer_global.h"
+#include "QHttpRequests_global.h"
 
-namespace compilerExplorer {
-namespace network{
+namespace requests {
 
-class COMPILEREXPLORERSHARED_EXPORT PostJsonRequest : public GetRequest
+
+class QHTTPREQUESTSSHARED_EXPORT PostJsonRequest : public GetRequest
 {
 public:
 	PostJsonRequest();
@@ -23,6 +23,5 @@ private:
 	QStringList mFilters;
 	QString mFiltersKey;
 };
-}
 }
 #endif // POSTJSONREQUEST_H

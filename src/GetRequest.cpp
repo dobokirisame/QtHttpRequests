@@ -2,8 +2,8 @@
 #include <QNetworkRequest>
 #include <QUrl>
 
-namespace compilerExplorer {
-namespace network{
+namespace requests {
+
 GetRequest::GetRequest()
     : Request() {
 
@@ -59,5 +59,4 @@ QString GetRequest::requestName() const {
 	return QObject::tr("GetRequest");
 }
 
-}
 }
