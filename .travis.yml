@@ -39,6 +39,5 @@ notifications:
 script:
   - source /opt/qt510/bin/qt510-env.sh
   - cd $TRAVIS_BUILD_DIR/src
-  - touch qt_deps.pri
   - /opt/qt510/bin/qmake src.pro
   - make
