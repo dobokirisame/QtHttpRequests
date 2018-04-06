@@ -6,21 +6,9 @@ variables:
     DEV_PACKAGE_NAME: qtHttpRequests-dev_1.0-0.deb
 
 stages:
-    - thirdparty_build
     - build
     - package
     - deploy
-
-thirdparty:
-    stage: thirdparty_build
-    script:
-        - cd ./third-party
-        - ./build_third_party.sh
-    artifacts:
-        expire_in: 15 min
-        paths:
-            - ./third-party/out
-    image: $DOCKER_IMAGE
 
 project:
     stage: build
@@ -28,8 +16,6 @@ project:
         - cd ./src
         - /opt/qt59/bin/qmake -r ./src.pro
         - make
-    dependencies:
-        - thirdparty
     artifacts:
         expire_in: 15 min
         paths:
