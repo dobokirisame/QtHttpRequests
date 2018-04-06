@@ -1,0 +1,71 @@
+variables:
+    DOCKER_IMAGE: ci-registry.dev.getmobit.ru:5000/qt59_custom_builder:latest
+    DEB_DIR: build/
+    GIT_SUBMODULE_STRATEGY: recursive
+    PACKAGE_NAME: qtHttpRequests_1.0-0.deb
+    DEV_PACKAGE_NAME: qtHttpRequests-dev_1.0-0.deb
+
+stages:
+    - thirdparty_build
+    - build
+    - package
+    - deploy
+
+thirdparty:
+    stage: thirdparty_build
+    script:
+        - cd ./third-party
+        - ./build_third_party.sh
+    artifacts:
+        expire_in: 15 min
+        paths:
+            - ./third-party/out
+    image: $DOCKER_IMAGE
+
+project:
+    stage: build
+    script:
+        - cd ./src
+        - /opt/qt59/bin/qmake -r ./src.pro
+        - make
+    dependencies:
+        - thirdparty
+    artifacts:
+        expire_in: 15 min
+        paths:
+            - ./build
+    image: $DOCKER_IMAGE
+
+qtHttpRequests-package:
+    stage: package
+    script:
+        - cd ./scripts
+        - ./build_package.sh
+    dependencies:
+        - project
+        - thirdparty
+    artifacts:
+        paths:
+            - ./scripts/*.deb
+    image: $DOCKER_IMAGE
+    
+qtHttpRequests-deploy:
+    stage: deploy
+    only:
+        - master@system0/QtHttpRequests
+    script:
+        - cd ./scripts
+        - curl -X POST -F file=@$PACKAGE_NAME http://aptly.dev.getmobit.ru/api/files/packages-dev
+        - curl -X POST http://aptly.dev.getmobit.ru/api/repos/ubuntu-getmobit-dev/file/packages-dev/$PACKAGE_NAME
+        - curl -X POST -F file=@$DEV_PACKAGE_NAME http://aptly.dev.getmobit.ru/api/files/packages-dev
+        - curl -X POST http://aptly.dev.getmobit.ru/api/repos/ubuntu-getmobit-dev/file/packages-dev/$DEV_PACKAGE_NAME
+        - "curl -X PUT -H 'Content-Type: application/json' --data '{}' http://aptly.dev.getmobit.ru/api/publish/ubuntu-getmobit-dev/xenial"
+
+    dependencies:
+        - project
+        - thirdparty
+        - qtHttpRequests-package
+    artifacts:
+        paths:
+            - ./scripts/*.deb
+    image: $DOCKER_IMAGE

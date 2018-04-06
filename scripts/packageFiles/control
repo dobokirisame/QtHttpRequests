@@ -1,0 +1,10 @@
+Package: qtHttpRequests
+Source: qtHttpRequests
+Section: embedded
+Priority: optional
+Maintainer: Andrey Semenov <asemenov@getmobit.ru>
+Original-Maintainer: Andrey Semenov <andrrrey.semenov@gmail.ru> https://github.com/dobokirisame/QtHttpRequests
+Installed-Size: 55
+Architecture: amd64
+Description: Simple Qt-based library to work with http request methods.  
+Version: 1.0-0
