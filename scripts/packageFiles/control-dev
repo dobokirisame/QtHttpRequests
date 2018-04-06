@@ -2,7 +2,6 @@ Package: qtHttpRequests-dev
 Source: qtHttpRequests-dev
 Section: embedded
 Priority: optional
-Priority: optional
 Maintainer: Andrey Semenov <asemenov@getmobit.ru>
 Original-Maintainer: Andrey Semenov <andrrrey.semenov@gmail.ru> https://github.com/dobokirisame/QtHttpRequests
 Installed-Size: 10
