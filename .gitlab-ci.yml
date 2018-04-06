@@ -29,7 +29,6 @@ qtHttpRequests-package:
         - ./build_package.sh
     dependencies:
         - project
-        - thirdparty
     artifacts:
         paths:
             - ./scripts/*.deb
@@ -49,7 +48,6 @@ qtHttpRequests-deploy:
 
     dependencies:
         - project
-        - thirdparty
         - qtHttpRequests-package
     artifacts:
         paths:
