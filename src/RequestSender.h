@@ -12,13 +12,13 @@ class Request;
 
 class QHTTPREQUESTSSHARED_EXPORT RequestSender : public QObject
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	explicit RequestSender(QObject *parent = nullptr);
+    explicit RequestSender(QObject *parent = nullptr);
 public slots:
-	QByteArray sendRequest(const std::unique_ptr<Request> &request) const;
+    QByteArray sendRequest(const std::unique_ptr<Request> &request) const;
 private:
-	QNetworkAccessManager *mManager;
+    QNetworkAccessManager *mManager;
 };
-}
+} //namespace requests
 #endif // REQUESTSENDER_H

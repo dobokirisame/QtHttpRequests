@@ -8,9 +8,9 @@ namespace requests {
 class QHTTPREQUESTSSHARED_EXPORT DeleteRequest : public GetRequest
 {
 public:
-	DeleteRequest();
-	std::unique_ptr<QNetworkReply> sendRequest(QNetworkAccessManager *manager) override;
-	QString requestName() const override;
+    DeleteRequest() = default;
+    std::unique_ptr<QNetworkReply> sendRequest(QNetworkAccessManager *manager) override;
+    QString requestName() const override;
 };
-}
+} //namespace requests
 #endif // DELETEREQUEST_H
