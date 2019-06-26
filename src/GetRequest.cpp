@@ -37,13 +37,11 @@ QString GetRequest::parametersString(const std::map<QString, QString> &parameter
 
 QNetworkRequest GetRequest::generateRequest(QNetworkAccessManager *manager) const {
     QNetworkRequest request;
-    QUrl url(address());
+    QUrl url = destinationUrl();
     if(address().startsWith(httpsPrefix)) {
-        manager->connectToHostEncrypted(address());
+        manager->connectToHostEncrypted(address(), static_cast<quint16>(port()));
     }
-
     url.setQuery(parametersString());
-
     QSslConfiguration sslConfiguration(QSslConfiguration::defaultConfiguration());
     sslConfiguration.setProtocol(QSsl::SecureProtocols);
     request.setSslConfiguration(sslConfiguration);

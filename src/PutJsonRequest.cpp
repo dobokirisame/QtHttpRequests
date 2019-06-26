@@ -17,7 +17,7 @@ std::unique_ptr<QNetworkReply> PutJsonRequest::sendRequest(QNetworkAccessManager
         return nullptr;
     }
     QNetworkRequest request;
-    QUrl url(address());
+    QUrl url = destinationUrl();
     url.setQuery(parametersString(mGetParameters));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     request.setUrl(url);
